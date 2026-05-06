@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "hero_jVaWmY": {
       "type": "hero",
@@ -65,6 +66,7 @@
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
         "media_type_2_mobile": "image",
+        "link": "",
         "open_in_new_tab": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -87,56 +89,6 @@
         "padding-block-start": 100,
         "padding-block-end": 72
       }
-    },
-    "ms_two_col_hero_001": {
-      "type": "ms-two-column-hero",
-      "name": "MS Two Column Hero",
-      "settings": {
-        "heading": "Welcome to Our Store",
-        "subtext": "Discover our latest collection and find the perfect style for you.",
-        "cta_label": "Shop Now",
-        "cta_link": "shopify://collections/all",
-        "full_width": false
-      }
-    },
-    "logo_strip_8XaKpL": {
-      "type": "logo-strip",
-      "name": "Logo Strip",
-      "settings": {
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "background_color": "#ffffff",
-        "enable_grayscale": false
-      },
-      "blocks": {
-        "logo_1": {
-          "type": "logo",
-          "settings": {}
-        },
-        "logo_2": {
-          "type": "logo",
-          "settings": {}
-        },
-        "logo_3": {
-          "type": "logo",
-          "settings": {}
-        },
-        "logo_4": {
-          "type": "logo",
-          "settings": {}
-        },
-        "logo_5": {
-          "type": "logo",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "logo_1",
-        "logo_2",
-        "logo_3",
-        "logo_4",
-        "logo_5"
-      ]
     },
     "product_list_fa6P9H": {
       "type": "product-list",
@@ -331,12 +283,22 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "ms_two_column_hero_UU8jxp": {
+      "type": "ms-two-column-hero",
+      "name": "MS Two Column Hero",
+      "settings": {
+        "heading": "Welcome to Our Store",
+        "subtext": "Discover our latest collection and find the perfect style for you.",
+        "cta_label": "Shop Now",
+        "cta_link": "shopify://collections/all",
+        "full_width": false
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
-    "ms_two_col_hero_001",
-    "logo_strip_8XaKpL",
+    "ms_two_column_hero_UU8jxp",
     "product_list_fa6P9H"
   ]
 }
