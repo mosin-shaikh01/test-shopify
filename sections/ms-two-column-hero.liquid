@@ -14,17 +14,13 @@
 >
   <div class="ms-two-col-hero__image-col">
     {%- if section.settings.image != blank -%}
+      {%- liquid
+        assign image_alt = section.settings.image.alt | escape
+      -%}
       {{
         section.settings.image
         | image_url: width: 1600
-        | image_tag:
-          width: section.settings.image.width,
-          height: section.settings.image.height,
-          widths: '400, 600, 800, 1000, 1200, 1600',
-          sizes: '(min-width: 750px) 50vw, 100vw',
-          alt: section.settings.image.alt | escape,
-          class: 'ms-two-col-hero__image',
-          loading: 'lazy'
+        | image_tag: width: section.settings.image.width, height: section.settings.image.height, widths: '400, 600, 800, 1000, 1200, 1600', sizes: '(min-width: 750px) 50vw, 100vw', alt: image_alt, class: 'ms-two-col-hero__image', loading: 'lazy'
       }}
     {%- else -%}
       {{ 'image' | placeholder_svg_tag: 'ms-two-col-hero__image ms-two-col-hero__placeholder' }}
