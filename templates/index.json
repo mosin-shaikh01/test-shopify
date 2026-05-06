@@ -88,6 +88,56 @@
         "padding-block-end": 72
       }
     },
+    "ms_two_col_hero_001": {
+      "type": "ms-two-column-hero",
+      "name": "MS Two Column Hero",
+      "settings": {
+        "heading": "Welcome to Our Store",
+        "subtext": "Discover our latest collection and find the perfect style for you.",
+        "cta_label": "Shop Now",
+        "cta_link": "shopify://collections/all",
+        "full_width": false
+      }
+    },
+    "logo_strip_8XaKpL": {
+      "type": "logo-strip",
+      "name": "Logo Strip",
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "background_color": "#ffffff",
+        "enable_grayscale": false
+      },
+      "blocks": {
+        "logo_1": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_2": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_3": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_4": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_5": {
+          "type": "logo",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "logo_1",
+        "logo_2",
+        "logo_3",
+        "logo_4",
+        "logo_5"
+      ]
+    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -285,6 +335,8 @@
   },
   "order": [
     "hero_jVaWmY",
+    "ms_two_col_hero_001",
+    "logo_strip_8XaKpL",
     "product_list_fa6P9H"
   ]
 }

@@ -1,0 +1,222 @@
+{% liquid
+  assign bg_color = section.settings.background_color | default: '#ffffff'
+  assign grayscale_class = ''
+  if section.settings.enable_grayscale
+    assign grayscale_class = 'logo-strip--grayscale'
+  endif
+%}
+
+<section
+  id="logo-strip-{{ section.id }}"
+  class="logo-strip {{ grayscale_class }}"
+  style="
+    background-color: {{ bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+  {% if request.visual_preview_mode %}
+    data-shopify-visual-preview
+  {% endif %}
+>
+  <div class="logo-strip__container">
+    {%- if section.blocks.size > 0 -%}
+      <div class="logo-strip__grid">
+        {%- for block in section.blocks -%}
+          <div class="logo-strip__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.logo != blank -%}
+              {{
+                block.settings.logo
+                | image_url: width: 400
+                | image_tag:
+                  width: block.settings.logo.width,
+                  height: block.settings.logo.height,
+                  widths: '150, 200, 250, 300, 400',
+                  sizes: '(min-width: 750px) 20vw, 50vw',
+                  alt: block.settings.logo.alt | escape,
+                  class: 'logo-strip__image',
+                  loading: 'lazy'
+              }}
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'logo-strip__image logo-strip__placeholder' }}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="logo-strip__empty">
+        <p>Add logos to get started</p>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .logo-strip {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .logo-strip__container {
+    max-width: var(--page-width, 1400px);
+    margin-inline: auto;
+    padding-inline: var(--page-margin, 20px);
+    box-sizing: border-box;
+  }
+
+  .logo-strip__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .logo-strip__grid {
+      gap: 32px;
+    }
+  }
+
+  .logo-strip__item {
+    flex: 0 1 auto;
+    max-width: 150px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .logo-strip__item {
+      max-width: 180px;
+    }
+  }
+
+  .logo-strip__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    transition: filter 0.3s ease;
+  }
+
+  .logo-strip__placeholder {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    display: block;
+    background-color: #f4f4f4;
+    border-radius: 4px;
+  }
+
+  /* Grayscale effect */
+  .logo-strip--grayscale .logo-strip__image {
+    filter: grayscale(100%);
+  }
+
+  .logo-strip--grayscale .logo-strip__item:hover .logo-strip__image {
+    filter: grayscale(0%);
+  }
+
+  .logo-strip__empty {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--color-foreground, #121212);
+    opacity: 0.5;
+  }
+
+  .logo-strip__empty p {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+
+  .logo-strip[data-shopify-visual-preview] {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Logo Strip",
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_grayscale",
+      "label": "Enable grayscale → color on hover",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Logo Strip",
+      "category": "Image",
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "background_color": "#ffffff",
+        "enable_grayscale": false
+      },
+      "blocks": [
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
