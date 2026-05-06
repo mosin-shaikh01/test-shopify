@@ -88,6 +88,17 @@
         "padding-block-end": 72
       }
     },
+    "ms_two_col_hero_001": {
+      "type": "ms-two-column-hero",
+      "name": "MS Two Column Hero",
+      "settings": {
+        "heading": "Welcome to Our Store",
+        "subtext": "Discover our latest collection and find the perfect style for you.",
+        "cta_label": "Shop Now",
+        "cta_link": "shopify://collections/all",
+        "full_width": false
+      }
+    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -285,6 +296,7 @@
   },
   "order": [
     "hero_jVaWmY",
+    "ms_two_col_hero_001",
     "product_list_fa6P9H"
   ]
 }
